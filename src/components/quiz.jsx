@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 function Quiz() {
   const questionBank = [
     {
@@ -11,20 +13,62 @@ function Quiz() {
       answer: "All",
     },
     {
-      question: "What is the capital city of Kenya?",
-      options: ["Kinangop", "Naivasha", "Nairobi", "Nakuru"],
-      answer: "Nairobi",
+      question: "Which of these is a famous wildlife reserve in Kenya?",
+      options: [
+        "Serengeti", // (Note: Serengeti is actually in Tanzania)
+        "Maasai Mara",
+        "Kruger", // (Kruger is in South Africa)
+        "Okavango", // (Okavango is in Botswana)
+      ],
+      answer: "Maasai Mara",
     },
   ];
+
+  const initialAnswers = [null, null, null];
+
+  const [userAnswers, setUserAnswers] = useState(initialAnswers);
+
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+
+  const selectedAnswer = userAnswers[currentQuestion];
+
+  function handleSelectOption(option) {
+    const newUserAnswers = [...userAnswers];
+    newUserAnswers[currentQuestion] = option;
+
+    setUserAnswers(newUserAnswers);
+  }
+
+  function goToNext() {
+    setCurrentQuestion(currentQuestion + 1);
+  }
+
+  function goToPrev() {
+    if (currentQuestion > 0) {
+      setCurrentQuestion(currentQuestion - 1);
+    }
+  }
 
   return (
     <div>
       <h2>Question 1</h2>
-      <p className="question">{questionBank[0].question}</p>
+      <p className="question">{questionBank[currentQuestion].question}</p>
 
-      {questionBank[0].options.map((option) => (
-        <button className="option">{option}</button>
+      {questionBank[currentQuestion].options.map((option) => (
+        <button className="option" onClick={() => handleSelectOption(option)}>
+          {option}
+        </button>
       ))}
+
+      <div className="nav-buttons">
+        <button onClick={goToPrev} disabled={currentQuestion === 0}>
+          Previous
+        </button>
+        <button onClick={goToNext} disabled={!selectedAnswer}>
+          {" "}
+          Next
+        </button>
+      </div>
     </div>
   );
 }
