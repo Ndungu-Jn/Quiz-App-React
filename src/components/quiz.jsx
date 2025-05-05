@@ -55,8 +55,20 @@ function Quiz() {
     }
   }
 
+  function restartQuiz() {
+    setUserAnswers(initialAnswers);
+    setCurrentQuestion(0);
+    setIsQuizFinished(false);
+  }
+
   if (isQuizFinished) {
-    return <Results userAnswers={userAnswers} questionBank={questionBank} />;
+    return (
+      <Results
+        userAnswers={userAnswers}
+        questionBank={questionBank}
+        restartQuiz={restartQuiz}
+      />
+    );
   }
 
   return (
