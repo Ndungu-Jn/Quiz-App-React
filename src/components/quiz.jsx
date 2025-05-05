@@ -55,7 +55,10 @@ function Quiz() {
       <p className="question">{questionBank[currentQuestion].question}</p>
 
       {questionBank[currentQuestion].options.map((option) => (
-        <button className="option" onClick={() => handleSelectOption(option)}>
+        <button
+          className={"option " + (selectedAnswer === option ? "selected" : "")}
+          onClick={() => handleSelectOption(option)}
+        >
           {option}
         </button>
       ))}
@@ -65,8 +68,7 @@ function Quiz() {
           Previous
         </button>
         <button onClick={goToNext} disabled={!selectedAnswer}>
-          {" "}
-          Next
+          {currentQuestion === questionBank.length - 1 ? "Finish Quiz" : "Next"}
         </button>
       </div>
     </div>
