@@ -51,7 +51,7 @@ function Quiz() {
 
   return (
     <div>
-      <h2>Question 1</h2>
+      <h2>Question {currentQuestion + 1}</h2>
       <p className="question">{questionBank[currentQuestion].question}</p>
 
       {questionBank[currentQuestion].options.map((option) => (
