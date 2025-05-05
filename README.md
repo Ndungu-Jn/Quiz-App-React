@@ -6,7 +6,7 @@ This is a simple and interactive quiz application built using **React**. The goa
 
 ## 📸 Demo
 
-! https://github.com/user-attachments/assets/047a7431-8b3d-40e3-89a0-f1d60bdb6edf
+https://github.com/user-attachments/assets/047a7431-8b3d-40e3-89a0-f1d60bdb6edf
 
 
 
