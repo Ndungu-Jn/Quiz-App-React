@@ -1,6 +1,5 @@
 import "./index.css";
 import Quiz from "./components/quiz";
-import Results from "./components/results";
 
 function App() {
   return (
